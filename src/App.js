@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import Person from "./components/Person";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [persons, setPersons] = useState([]);
+
+    useEffect(() => {
+        //the side effect - fetch persons/users
+        async function getData() {
+            const response = await fetch("https://raw.githubusercontent.com/cederdorff/mdu-frontend/main/data/users.json");
+            const data = await response.json();
+            console.log(data);
+            setPersons(data);
+        }
+
+        getData();
+    }, []);
+
+    return (
+        <>
+            <header className="topbar">
+                <h1>React Fetch Persons</h1>
+            </header>
+            <main className="page">
+                <section className="grid-container">
+                    {persons.map(person => (
+                        <Person person={person} key={person.id} />
+                    ))}
+                </section>
+            </main>
+        </>
+    );
 }
 
 export default App;
