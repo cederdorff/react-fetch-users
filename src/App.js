@@ -23,8 +23,8 @@ function App() {
             </header>
             <main className="page">
                 <section className="grid-container">
-                    {persons.map(person => (
-                        <Person person={person} key={person.id} />
+                    {persons.map(personObject => (
+                        <Person person={personObject} key={personObject.id} />
                     ))}
                 </section>
             </main>
