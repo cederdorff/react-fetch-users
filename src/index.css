@@ -180,6 +180,18 @@ nav a.active {
     margin: 0.3em 0;
 }
 
+/* ---------- buttons in grid container ---------- */
+
+.grid-container .btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.grid-container .btns button {
+    width: 100%;
+}
+
 /* ---------- form styling ---------- */
 
 form {
@@ -240,7 +252,7 @@ input {
     border: solid 2px var(--green);
 }
 
-/* .image-preview {
+.image-preview {
     width: 100%;
     max-width: 350px;
     height: 200px;
@@ -248,8 +260,7 @@ input {
     margin: auto;
     display: block;
     cursor: pointer;
-    background-image: url("./img/user-placeholder.jpg");
-} */
+}
 
 form .file-input {
     display: none;
